@@ -1,0 +1,22 @@
+{
+  "name": "web-development-course",
+  "version": "2.0.0",
+  "description": "Курс Web-программирования, ПГНИУ, г. Пермь",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShGKme/web-development-course.git"
+  },
+  "author": "Grigorii K. Shartsev <me@shgk.me>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ShGKme/web-development-course/issues"
+  },
+  "homepage": "https://github.com/ShGKme/web-development-course#readme",
+  "dependencies": {
+    "toc-md": "^0.2.0"
+  }
+}
