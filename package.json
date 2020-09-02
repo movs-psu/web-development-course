@@ -4,6 +4,11 @@
   "description": "Курс Web-программирования, ПГНИУ, г. Пермь",
   "main": "index.js",
   "scripts": {
+    "serve:materials": "marp -w ./materials/**/*.md",
+    "build:materials-html": "marp ./materials/**/*.md",
+    "build:materials-pdf": "marp --pdf --allow-local-files ./materials/**/*.md",
+    "build:materials": "npm run build:materials-html && npm run build:materials-pdf",
+    "build": "npm run build:materials",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +22,7 @@
   },
   "homepage": "https://github.com/ShGKme/web-development-course#readme",
   "dependencies": {
+    "@marp-team/marp-cli": "^0.21.0",
     "markdown-toc": "^1.2.0"
   }
 }
