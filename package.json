@@ -4,14 +4,15 @@
   "description": "Курс Web-программирования, ПГНИУ, г. Пермь",
   "main": "index.js",
   "scripts": {
-    "build:labs-html": "md-to-pdf --config-file=.configs/md-to-pdf.js --as-html ./labs/0-Incoming-control.md",
-    "build:labs-pdf": "md-to-pdf --config-file=.configs/md-to-pdf.js ./labs/0-Incoming-control.md README.md",
+    "build:pages": "md-to-pdf --config-file=.configs/md-to-pdf.js --as-html README.md Plan.md Exam.md",
+    "build:labs-html": "md-to-pdf --config-file=.configs/md-to-pdf.js --as-html labs/0-Incoming-control.md",
+    "build:labs-pdf": "md-to-pdf --config-file=.configs/md-to-pdf.js labs/0-Incoming-control.md README.md",
     "build:labs": "npm run build:labs-html && npm run build:labs-pdf",
     "serve:materials": "marp -w ./materials/**/*.md",
     "build:materials-html": "marp ./materials/**/*.md",
     "build:materials-pdf": "marp --pdf --allow-local-files ./materials/**/*.md",
     "build:materials": "npm run build:materials-html && npm run build:materials-pdf",
-    "build": "npm run build:materials",
+    "build": "npm run build:materials && npm run build:pages && npm run build:labs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
