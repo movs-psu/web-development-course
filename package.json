@@ -4,6 +4,9 @@
   "description": "Курс Web-программирования, ПГНИУ, г. Пермь",
   "main": "index.js",
   "scripts": {
+    "build:labs-html": "md-to-pdf --config-file=.configs/md-to-pdf.js --as-html ./labs/0-Incoming-control.md",
+    "build:labs-pdf": "md-to-pdf --config-file=.configs/md-to-pdf.js ./labs/0-Incoming-control.md README.md",
+    "build:labs": "npm run build:labs-html && npm run build:labs-pdf",
     "serve:materials": "marp -w ./materials/**/*.md",
     "build:materials-html": "marp ./materials/**/*.md",
     "build:materials-pdf": "marp --pdf --allow-local-files ./materials/**/*.md",
@@ -23,6 +26,7 @@
   "homepage": "https://github.com/ShGKme/web-development-course#readme",
   "dependencies": {
     "@marp-team/marp-cli": "^0.21.0",
-    "markdown-toc": "^1.2.0"
+    "markdown-toc": "^1.2.0",
+    "md-to-pdf": "^3.1.1"
   }
 }
