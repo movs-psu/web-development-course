@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/ShGKme/web-development-course/issues"
   },
-  "homepage": "https://github.com/ShGKme/web-development-course#readme",
+  "homepage": "http://web.shgk.me",
   "dependencies": {
     "@marp-team/marp-cli": "^0.21.0",
     "markdown-toc": "^1.2.0",
