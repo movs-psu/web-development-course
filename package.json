@@ -4,7 +4,8 @@
   "description": "Курс Web-программирования, ПГНИУ, г. Пермь",
   "main": "index.js",
   "scripts": {
-    "build:pages": "md-to-pdf --config-file=.configs/md-to-pdf.js --as-html README.md Plan.md Exam.md",
+    "toc": "markdown-toc -i README.md && markdown-toc -i Plan.md",
+    "build:pages": "md-to-pdf --config-file=.configs/md-to-pdf.js --as-html README.md Plan.md Exam.md DEVELOPMENT.md CONTRIBUTING.md",
     "build:labs-html": "md-to-pdf --config-file=.configs/md-to-pdf.js --as-html labs/0-Incoming-control.md",
     "build:labs-pdf": "md-to-pdf --config-file=.configs/md-to-pdf.js labs/0-Incoming-control.md README.md",
     "build:labs": "npm run build:labs-html && npm run build:labs-pdf",
