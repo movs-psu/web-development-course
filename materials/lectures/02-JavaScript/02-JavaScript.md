@@ -123,7 +123,7 @@ var x, y, z = 0,
 
 ---
 
-# Rest оператор
+# Rest оператор и деструктуризация
 
 ```javascript
 const X = {
@@ -134,14 +134,16 @@ const X = {
 const Y = {
     ...X,
     b: 3,
+    c: 4,
+    d: 5,
 };
 
-const { a, b } = Y; // 1, 3
+const { a, b, ...rest } = Y; // a = 1, b = 3, rest = { c: 4, d: 5 }
 ```
 
 ---
 
-# Rest оператор
+# Rest оператор и деструктуризация
 
 ```javascript
 const X = [1, 2, 3];
@@ -182,9 +184,9 @@ do { action; } while (condition);
 
 for (let i = 0; i < arr.length; i++) { console.log(arr[i]); }
 
-for (let key in arr) { console.log(arr[key]); }
+for (let key in obj) { console.log(obj[key]); }
 
-for (let val of arr) { console.log(val); }
+for (let val of obj) { console.log(val); }
 ```
 
 ---
@@ -280,7 +282,7 @@ const Person2 = { name: 'Alice' };
 Person.getName1();                   
 Person.getName2();                   
 Person.getName3();                   
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                     
 ```
 
@@ -304,7 +306,7 @@ const Person2 = { name: 'Alice' };
 Person.getName1();                   // Bob, this === Person
 Person.getName2();                   
 Person.getName3();                   
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                     
 ```
 
@@ -329,7 +331,7 @@ const Person2 = { name: 'Alice' };
 Person.getName1();                   // Bob, this === Person
 Person.getName2();                   // error, this === undefined
 Person.getName3();                   
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                   
 ```
 
@@ -354,7 +356,7 @@ const Person2 = { name: 'Alice' };
 Person.getName1();                   // Bob, this === Person
 Person.getName2();                   // error, this === undefined
 Person.getName3();                   // Bob, this === Person
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                   
 ```
 
@@ -379,7 +381,7 @@ const Person2 = { name: 'Alice' };
 Person.getName1();                   // Bob, this === Person
 Person.getName2();                   // error, this === undefined
 Person.getName3();                   // Bob, this === Person
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                   // Alice, this === Person2
 ```
 
@@ -405,7 +407,7 @@ getPersonName('Mr. ');                  // Mr. Bob
 # Стрелочные функции
 
 - Не влияет на контекст
-- Может использоваться, как lambda-функция
+- Короткий синтаксис для lambda-функций
 
 ```
 // this == obj
@@ -711,4 +713,4 @@ const promise = import('path/to/module');
 
 # In the next episode
 
-Flex-box и вёрстка: подходы, best practices
+JavaScript в браузере: DOM, BOM

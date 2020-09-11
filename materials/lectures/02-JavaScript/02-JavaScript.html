@@ -246,7 +246,7 @@ section::after {
 }
 " data-marpit-pagination="9" data-marpit-pagination-total="44" style="--paginate:true;--background-color:#fff;--theme:gaia;
 ;background-color:#fff;background-image:none;">
-<h1>Rest оператор</h1>
+<h1>Rest оператор и деструктуризация</h1>
 <pre><code class="language-javascript"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">const</span> X = {
     <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>,
     <span class="hljs-attr">b</span>: <span class="hljs-number">2</span>
@@ -255,9 +255,11 @@ section::after {
 <span class="hljs-keyword">const</span> Y = {
     ...X,
     <span class="hljs-attr">b</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">c</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">d</span>: <span class="hljs-number">5</span>,
 };
 
-<span class="hljs-keyword">const</span> { a, b } = Y; <span class="hljs-comment">// 1, 3</span>
+<span class="hljs-keyword">const</span> { a, b, ...rest } = Y; <span class="hljs-comment">// a = 1, b = 3, rest = { c: 4, d: 5 }</span>
 </span></span></foreignObject></svg></code></pre>
 <footer>Лекция №2: JavaScript / Курс Web-программирования 2020 / ПГНИУ</footer>
 </section>
@@ -275,7 +277,7 @@ section::after {
 }
 " data-marpit-pagination="10" data-marpit-pagination-total="44" style="--paginate:true;--background-color:#fff;--theme:gaia;
 ;background-color:#fff;background-image:none;">
-<h1>Rest оператор</h1>
+<h1>Rest оператор и деструктуризация</h1>
 <pre><code class="language-javascript"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">const</span> X = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
 <span class="hljs-keyword">const</span> Y = [...X, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
 
@@ -336,9 +338,9 @@ section::after {
 
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) { <span class="hljs-built_in">console</span>.log(arr[i]); }
 
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> arr) { <span class="hljs-built_in">console</span>.log(arr[key]); }
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> obj) { <span class="hljs-built_in">console</span>.log(obj[key]); }
 
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> val <span class="hljs-keyword">of</span> arr) { <span class="hljs-built_in">console</span>.log(val); }
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> val <span class="hljs-keyword">of</span> obj) { <span class="hljs-built_in">console</span>.log(val); }
 </span></span></foreignObject></svg></code></pre>
 <footer>Лекция №2: JavaScript / Курс Web-программирования 2020 / ПГНИУ</footer>
 </section>
@@ -493,7 +495,7 @@ section::after {
 Person.getName1();                   
 Person.getName2();                   
 Person.getName3();                   
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                     
 </span></span></foreignObject></svg></code></pre>
 <footer>Лекция №2: JavaScript / Курс Web-программирования 2020 / ПГНИУ</footer>
@@ -530,7 +532,7 @@ section::after {
 Person.getName1();                   <span class="hljs-comment">// Bob, this === Person</span>
 Person.getName2();                   
 Person.getName3();                   
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                     
 </span></span></foreignObject></svg></code></pre>
 <footer>Лекция №2: JavaScript / Курс Web-программирования 2020 / ПГНИУ</footer>
@@ -567,7 +569,7 @@ section::after {
 Person.getName1();                   <span class="hljs-comment">// Bob, this === Person</span>
 Person.getName2();                   <span class="hljs-comment">// error, this === undefined</span>
 Person.getName3();                   
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                   
 </span></span></foreignObject></svg></code></pre>
 <footer>Лекция №2: JavaScript / Курс Web-программирования 2020 / ПГНИУ</footer>
@@ -604,7 +606,7 @@ section::after {
 Person.getName1();                   <span class="hljs-comment">// Bob, this === Person</span>
 Person.getName2();                   <span class="hljs-comment">// error, this === undefined</span>
 Person.getName3();                   <span class="hljs-comment">// Bob, this === Person</span>
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                   
 </span></span></foreignObject></svg></code></pre>
 <footer>Лекция №2: JavaScript / Курс Web-программирования 2020 / ПГНИУ</footer>
@@ -641,7 +643,7 @@ section::after {
 Person.getName1();                   <span class="hljs-comment">// Bob, this === Person</span>
 Person.getName2();                   <span class="hljs-comment">// error, this === undefined</span>
 Person.getName3();                   <span class="hljs-comment">// Bob, this === Person</span>
-Person2.getName = Person.getName1();
+Person2.getName = Person.getName1;
 Person2.getName();                   <span class="hljs-comment">// Alice, this === Person2</span>
 </span></span></foreignObject></svg></code></pre>
 <footer>Лекция №2: JavaScript / Курс Web-программирования 2020 / ПГНИУ</footer>
@@ -692,7 +694,7 @@ section::after {
 <h1>Стрелочные функции</h1>
 <ul>
 <li>Не влияет на контекст</li>
-<li>Может использоваться, как lambda-функция</li>
+<li>Короткий синтаксис для lambda-функций</li>
 </ul>
 <pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment">// this == obj</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">F</span>(<span class="hljs-params">arg</span>) </span>{
@@ -1271,7 +1273,7 @@ section::after {
 " class="lead" data-marpit-pagination="44" data-marpit-pagination-total="44" style="--paginate:true;--background-color:#fff;--class:lead;--theme:gaia;
 ;background-color:#fff;background-image:none;">
 <h1>In the next episode</h1>
-<p>Flex-box и вёрстка: подходы, best practices</p>
+<p>JavaScript в браузере: DOM, BOM</p>
 <footer>Лекция №2: JavaScript / Курс Web-программирования 2020 / ПГНИУ</footer>
 </section>
 <script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let o,r;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",({data:e,origin:o})=>{if(o===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),o=Number.parseFloat(t);Number.isNaN(o)||(r=o)}}catch(t){console.error(t)}}));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||r||t.currentScale||1;o!==c&&(o=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let o=0;o<u;o+=1){const r=t.children[o],a=r.getScreenCTM();if(a){const t=null!==(n=null===(e=r.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,o=null!==(s=null===(i=r.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=r.firstChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-o}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}}),!1!==l&&Array.from(i.querySelectorAll("iframe"),({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)})}o=1,r=void 0;const i=(t,e,o)=>{if(t.getAttribute(e)!==o)return t.setAttribute(e,o),!0};function a(t={}){const e="boolean"==typeof t?(t=>{const e=!t;return console.warn(`[DEPRECATION WARNING] Usage of observer() with boolean option has been deprecated. Please replace with the usage of option object: observer({ once: ${e?"true":"false"} }).`),{once:e}})(t):t,{once:o=!1,target:r=document}=e,a="Apple Computer, Inc."===navigator.vendor?[n]:[];let l=!o;const s=()=>{for(const t of a)t({target:r});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),t=>{var e;const o=t.firstChild,r=o.firstChild,{scrollWidth:n,scrollHeight:a}=r;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(o,"width",""+c),i(o,"height",""+d),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")})}(r),l&&window.requestAnimationFrame(s)};return s(),()=>{l=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),o=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:o})})(s?s.getRootNode():document)}();
