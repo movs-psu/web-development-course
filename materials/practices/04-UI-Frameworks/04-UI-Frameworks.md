@@ -203,12 +203,6 @@ Web-программирование / ПГНИУ
 
 ---
 
-# Примеры
-
-- https://repl.it/@ShGKme/Web-Moodle-clone-with-bootstrap
-
----
-
 # Ссылки
 
 - https://purecss.io, https://milligram.io
