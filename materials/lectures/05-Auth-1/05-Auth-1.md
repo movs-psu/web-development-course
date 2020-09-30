@@ -185,15 +185,24 @@ Web-программирование / ПГНИУ
 
 ---
 
+# Авторизация
+
+- При большом количестве разных видов операций, субъектов, объектов, правил может быть очень нетривиальной задачей определить, есть ли у пользователя права на выполнение операции. Существует несколько подходов, таких как:
+- **ACL** (Access Control List) - список "кто, что, с чем" может делать
+- **RBAC** (Role Based Access Control) - управление доступом на основе ролей
+- **ABAC** (Attribute-Based Access Control) - разграничение доступа на основе атрибутов
+
+---
+
 # Ссылки
 
-- Cookies: https://developer.mozilla.org/ru/docs/Web/HTTP/Куки
-- HTTP авторизация: https://developer.mozilla.org/ru/docs/Web/HTTP/Авторизация
-- WebAuthN:
-    − https://webauthn.guide
-    − https://webauthn.io
-- Обзор способов и протоколов аутентификации в веб-приложениях: https://habr.com/ru/company/dataart/blog/262817/
-- Веб-безопасность: [https://developer.mozilla.org/ru/docs/Learn/Server-side/First_steps/Веб_Безопасность](https://developer.mozilla.org/ru/docs/Learn/Server-side/First_steps/Веб_Безопасность)
+- https://developer.mozilla.org/ru/docs/Web/HTTP/Куки
+- https://developer.mozilla.org/ru/docs/Web/HTTP/Авторизация
+- https://developer.mozilla.org/ru/docs/Learn/Server-side/First_steps/Веб_Безопасность
+- https://webauthn.io
+- Обзор способов и протоколов аутентификации в веб-приложениях: [Habr](https://habr.com/ru/company/dataart/blog/262817/)
+- Подходы к контролю доступа: RBAC vs. ABAC: [Habr](https://habr.com/ru/company/custis/blog/248649/)
+- Никто (почти) не знает, что такое авторизация: [Habr](https://habr.com/ru/company/avanpost/blog/480576/)
 
 ---
 
@@ -201,4 +210,6 @@ Web-программирование / ПГНИУ
 
 # In the next episode
 
-AJAX, API. К теме аутентификации и безопасности мы вернёмся во второй половине курса
+AJAX, API
+
+К теме аутентификации и безопасности мы вернёмся во второй половине курса
