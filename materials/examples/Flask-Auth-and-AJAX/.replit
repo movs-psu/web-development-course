@@ -1,0 +1,3 @@
+run = "python main.py"
+language = "python"
+onBoot = "python recreate_db.py"

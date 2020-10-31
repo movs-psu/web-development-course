@@ -1,0 +1,38 @@
+{% extends "layouts/base_layout.html" %}
+
+{% block main %}
+    <form action="/todos" method="POST" class="card mb-3">
+        <header class="card-header">Add todo (традиционная форма)</header>
+
+        <div class="card-body">
+            <div class="form-group">
+                <label for="title-input">Title:</label>
+                <input type="text" name="title" class="form-control" id="title-input" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </div>
+    </form>
+
+    <form class="card mb-3" id="ajax-form">
+        <header class="card-header">Add todo (AJAX)</header>
+
+        <div class="card-body">
+            <div class="form-group">
+                <label for="title-input-ajax">Title:</label>
+                <input type="text" name="title" class="form-control" id="title-input-ajax" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-header">Todos</div>
+        <ul class="list-group list-group-flush" id="todos">
+            {% for todo in todos %}
+            <li class="list-group-item" data-todo-id="{{ todo.id }}">
+                {{ todo.title }}<button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteTodo({{ todo.id }})">❌</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
