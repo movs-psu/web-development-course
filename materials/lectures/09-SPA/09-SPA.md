@@ -156,13 +156,73 @@ https://repl.it/@ShGKme/Web-HTML5-HistoryAPI
 
 ---
 
-# Недостатки
+# Недостатки SPA
 
 * Не работает без JS
-* SEO. Умеют ли поисковые системы анализировать SPA?
+* **SEO - Search Engine Optimisation**. Умеют ли поисковые системы анализировать SPA?
 * Пользователь загружает страницу, загружающую страницу
 * Увеличение нагрузки на клиент
 * Обработка ошибок и HTTP Status
+
+---
+
+# Недостатки SPA
+
+- Проблемы с SEO - поисковик получает пустую страницу без контента с HTTP статусом 200
+- Проблемы с UX - пользователь получает приложение, которое после запрашивает данные
+  (time-to-content)
+
+---
+
+# Решение проблем с SEO
+
+1. Создание HTML версий страниц традиционным способом
+2. Prerendering
+3. SSR - Server-Side Rendering
+
+---
+
+# Prerendering
+
+* Рендерим страницу на сервере, и отдаём её HTML (в headless браузере или jsdom).
+* Варианты решения:
+    - Prerender SPA Plugin - плагин для Webpack, генерирующий страницы при сборке
+    - prerender - сервер с Headless Chrome + посредник запроса для nodejs, nginx и т.д.
+    - prerender.io и другие облачные решения
+* Простое решение, просто работает
+* Очень дорого, если страниц очень много или они часто меняются
+
+---
+
+# SSR
+
+* **SSR - Server-Side-Rendering**
+* Изначально рендерим сайт на сервере, используя возможности фреймворка на Node.js, и встраиваем данные при необходимости
+* Далее сайт работает, как SPA
+* **Изоморфное приложение** - приложение, в котором код может исполняться как на серверной, так и на клиентской части
+* Решает и проблему SEO, и time-to-content
+* Значительно усложняет разработку
+
+---
+
+# Простой SSR
+
+1) Приложение рендерится на сервере с помощью Node.js или аналога и возможностей JS  фреймворка
+2) В браузер приходит срендеренный HTML
+3) JS фреймворк выполняет **гидрацию**, при которой срендеренное приложение превращается в приложение JS фреймворка (разметка должна совпадать)
+4) Далее приложение работает, как SPA
+5) Работает?
+
+---
+
+## SSR с данными
+
+1) Приложение рендерится на сервере
+2) Все необходимые данные запрашиваются на сервере
+3) В браузер приходит срендеренный HTML **вместе с данными в некотором контейнере**
+   (например, в `window.__INIT_DATA__ = data`)
+4) Выполняется гидрация. **До и во время гидрации при инициализации компонентов приложения, если им нужны данные, они берутся из этого контейнера**
+5) Далее приложение работает, как SPA
 
 ---
 
@@ -171,6 +231,7 @@ https://repl.it/@ShGKme/Web-HTML5-HistoryAPI
 - HTML5 History API
     - Гайд: [https://developer.mozilla.org/ru/docs/Web/API/History_API](https://developer.mozilla.org/ru/docs/Web/API/History_API)
     - Документация: [https://developer.mozilla.org/ru/docs/Web/API/History](https://developer.mozilla.org/ru/docs/Web/API/History)
+- [HolyJS 2019 Moscow | Guillermo Rauch — Client rendering, server rendering, pre rendering](https://www.youtube.com/watch?v=impcGrPD0xQ)
 - Vue Router: [https://router.vuejs.org/](https://router.vuejs.org/)
 - https://repl.it/@ShGKme/Web-HTML5-HistoryAPI
 - https://repl.it/@ShGKme/Web-Simple-Routing-in-Vue
