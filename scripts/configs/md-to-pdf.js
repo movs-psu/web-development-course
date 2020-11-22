@@ -6,7 +6,7 @@ module.exports = {
           .page-break { page-break-after: always; }
           /* .markdown-body { font-size: 11px; } */
           .markdown-body pre > code { white-space: pre-wrap; }`,
-    body_class: 'markdown-body',
+    body_class: ['markdown-body'],
     pdf_options: {
         format: "A4",
         margin: "12mm",

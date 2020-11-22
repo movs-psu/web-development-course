@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "toc": "markdown-toc -i README.md && markdown-toc -i Plan.md",
-    "build:pages": "md-to-pdf --config-file=.configs/md-to-pdf.js --as-html README.md Plan.md Exam.md DEVELOPMENT.md CONTRIBUTING.md",
-    "build:labs-html": "md-to-pdf --config-file=.configs/md-to-pdf.js --as-html labs/0-Incoming-control.md labs/1-HTML-CSS.md",
-    "build:labs-pdf": "md-to-pdf --config-file=.configs/md-to-pdf.js labs/0-Incoming-control.md labs/1-HTML-CSS.md",
-    "build:labs": "npm run build:labs-html && npm run build:labs-pdf",
+    "build:pages": "node scripts/build-pages.js",
+    "build:labs": "node scripts/build-labs.js",
     "serve:materials": "marp -w ./materials/**/*.md",
     "build:materials-html": "marp ./materials/**/*.md",
     "build:materials-pdf": "marp --pdf --allow-local-files ./materials/**/*.md",
@@ -30,5 +28,12 @@
     "@marp-team/marp-cli": "^0.21.0",
     "markdown-toc": "^1.2.0",
     "md-to-pdf": "^3.1.1"
+  },
+  "prettier": {
+    "endOfLine": "lf",
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 120,
+    "trailingComma": "all"
   }
 }
