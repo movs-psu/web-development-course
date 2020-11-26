@@ -7,11 +7,12 @@
     "toc": "markdown-toc -i README.md && markdown-toc -i Plan.md",
     "build:pages": "node scripts/build-pages.js",
     "build:labs": "node scripts/build-labs.js",
-    "serve:materials": "marp -w ./materials/**/*.md",
     "build:materials-html": "marp ./materials/**/*.md",
     "build:materials-pdf": "marp --pdf --allow-local-files ./materials/**/*.md",
     "build:materials": "npm run build:materials-html && npm run build:materials-pdf",
     "build": "npm run toc && npm run build:materials && npm run build:pages && npm run build:labs",
+    "watch:materials": "marp -w ./materials/**/*.md",
+    "serve:materials": "marp -s ./materials",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

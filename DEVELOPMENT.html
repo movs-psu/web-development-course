@@ -100,7 +100,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-/*# sourceURL=C:\Files\Projects\web-development-course\node_modules\md-to-pdf\node_modules\highlight.js\styles\github.css*/</style></head>
+/*# sourceURL=C:\Projects\web-development-course\node_modules\md-to-pdf\node_modules\highlight.js\styles\github.css*/</style></head>
 <body class="markdown-body">
 <h1 id="разработка-курса">Разработка курса</h1>
 <p>Звучит сложно, но на самом деле это не так страшно, если вы знакомы с Node.js и npm, активно применяющимися в инструментах веб-разработки.</p>
@@ -157,8 +157,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <td>Сборка всего вышеперечисленного</td>
 </tr>
 <tr>
-<td><code>serve:materials</code></td>
+<td><code>watch:materials</code></td>
 <td>Запуск сборки материалов в HTML с автоматической пересборкой при сохранении</td>
+</tr>
+<tr>
+<td><code>serve:materials</code></td>
+<td>Запуск локального сервера в материалах с пересборкой при сохранении</td>
 </tr>
 </tbody></table>
 <h2 id="страницы-курса">Страницы курса</h2>
@@ -169,18 +173,19 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </ul>
 <h2 id="лабораторные-работы">Лабораторные работы</h2>
 <p>Лабораторные работы описаны аналогично страницам курса, но дополнительно собираются в PDF.</p>
-<p><strong>Важно:</strong> у каждой лабораторной работы есть отдельный репозиторий с условием и дополнительными файлами.</p>
+<p><strong>Важно:</strong> у некоторых лабораторных работы есть отдельный репозиторий с условием и дополнительными файлами.</p>
 <h2 id="материалы-презентации">Материалы (презентации)</h2>
 <p>Презентации представлены текстом в формате Markdown (MD) с использованием <strong>Marp (Markdown Presentation Ecosystem)</strong>: <a href="https://marp.app/">https://marp.app/</a></p>
 <ul>
 <li>Создание и изменение презентации - редактирование файла <code>.md</code>. Описание возможностей и синтаксис: <a href="https://marpit.marp.app/">https://marpit.marp.app/</a></li>
 <li>Преобразование презентации в HTML и PDF работает через <a href="https://github.com/marp-team/marp-cli">marp-cli</a> (см. <code>npm scripts</code> выше)</li>
 <li>При редактировании презентации удобно включать режим сборки с watch (скрипт <code>serve:materials</code>), при котором презентация будет автоматически пересобираться в HTML и обновляться в браузере при изменении файла. Если у вас не работает этот скрипт, можно попробовать запустить его для конкретного файла <code>npx marp -w ./materials/path/to/some.md</code></li>
+<li>Либо можно запустить локальный сервер с <code>npm run serve:materials</code>, где запуститься сервер для материалов со сборкой презентаций</li>
 <li>Можно использовать <a href="https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode">расширение для VS Code</a>.</li>
 </ul>
 <h2 id="примечание-по-преобразованию-в-pdf">Примечание по преобразованию в PDF</h2>
-<p>Преобразование в PDF работает через HTML и Headless Chrome. </p>
-<p>Должен быть установлен <code>Google Chrome</code> (работает само), либо любой основанный на <code>Chromium</code> браузер (например, стандартный в OS Windows Microsoft Edge). </p>
+<p>Преобразование в PDF работает через HTML и Headless Chrome.</p>
+<p>Должен быть установлен <code>Google Chrome</code> (работает само), либо любой основанный на <code>Chromium</code> браузер (например, стандартный в OS Windows Microsoft Edge).</p>
 <p>Утилиты сборки будут искать браузер по стандартным путями установки <code>Google Chrome</code>, затем по пути, указанному в ENV переменной <code>CHROME_PATH</code>. Достаточно указать путь до любого установленного Chromium-based браузера в этой переменной при запуске.</p>
 
 
