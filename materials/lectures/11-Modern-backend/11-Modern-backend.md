@@ -413,6 +413,7 @@ Web-программирование / ПГНИУ
 
 - Эффективные надежные микросервисы: [https://habr.com/ru/company/odnoklassniki/blog/499316/](https://habr.com/ru/company/odnoklassniki/blog/499316/)
 - HolyJS 2018 Moscow | Дмитрий Пацура — Микросервисная архитектура: [https://www.youtube.com/watch?v=wXaoKroEnp4](https://www.youtube.com/watch?v=wXaoKroEnp4)
+- IBM | SOA vs. Microservices: What’s the Difference?: [https://www.ibm.com/cloud/blog/soa-vs-microservices](https://www.ibm.com/cloud/blog/soa-vs-microservices) 
 - Wikipedia OAuth: [https://ru.wikipedia.org/wiki/OAuth](https://ru.wikipedia.org/wiki/OAuth)
 - JWT: [https://jwt.io](https://jwt.io)
 - Хорошая статья про JWT: [https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/](https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/)
