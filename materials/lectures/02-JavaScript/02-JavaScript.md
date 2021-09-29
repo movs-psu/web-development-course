@@ -2,7 +2,7 @@
 theme: gaia
 paginate: true
 backgroundColor: #fff
-footer: Лекция №2: JavaScript / Курс Web-программирования 2020 / ПГНИУ
+footer: Лекция №2: JavaScript / Курс Web-программирования 2021 / ПГНИУ
 style: |
     section {
       font-family: "Open Sans", "Tahoma", "apple color emoji", "segoe ui emoji", "segoe ui symbol", "noto color emoji";
@@ -34,8 +34,8 @@ Web-программирование / ПГНИУ
 * Исторически - язык сценариев веб-страниц
 * Мульти-парадигменный язык программирования (объектно-ориентированный, императивный, функциональный)
 * Интерпретируемый ЯП (или JIT-компилируемый)
-* Прототипно-ориентированный ЯП
-* Событийно-ориентированный ЯП
+* Прототипно-ориентированный
+* Событийно-ориентированный
 * Автоматическое управление памятью
 * C-подобный синтаксис
 
@@ -44,11 +44,12 @@ Web-программирование / ПГНИУ
 # ECMAScript
 
 - Старый JS: ES3
-- Должно основная версия (~2012): ES5
+- Долго основная версия (~2012): ES5
 - Большие изменения в ES6 = ES2015
-- С 2015 ежегодный цикл
-- Текущая версия ES2020
-- `ActionScript`, `QtScript`, `ExtendScript`, `Unityscript`
+- С 2015 года - ежегодный цикл
+- Текущая версия ES2021
+- Другие реализации стандарта:\
+  `ActionScript`, `QtScript`, `ExtendScript`, `UnityScript` (dead)
 
 ---
 
@@ -60,8 +61,9 @@ Web-программирование / ПГНИУ
 * Основные стандартные типы:
   *Number*, *String*, *Boolean*, Array, Object, Function
   *Symbol*, Set, Map, WeakSet, WeakMap, *BigInt*
-* Типы делятся на мутабельные и *иммутабельные*
-* Все мутабельные типы - объекты
+* Значения типов делятся на:
+  * _иммутабельные_ (примитивы)
+  * _мутабельные_ (объекты)
 
 ---
 
@@ -83,30 +85,46 @@ undefined, null, NaN, Infinity  // Special
 
 ---
 
+# Особенность вычисления значения
+
+* Для веб-страницы "упасть" хуже "некорректного" значения
+* Много разрешённых неявных приведений типов
+* Несуществующие поля объекта - `undefined`
+* Несуществующие элементы массива - `undefined`
+* `1 + '2' === 12`
+* `'22' - 1 === 21` 
+* `[] + {} == '[object Object]'`
+* `{} + [] == '[object Object]'`
+* Многое допустимо
+
+---
+
+![bg](#000)
+![bg contain](img/mem-1.png)
+
+---
+
 # Объявление переменных
 
 ```javascript
-variable = 'value'
-var x, y, z = 0, 
-    k = '', arr = [];
-{
-    var a = 1; // Объявлено везде
-}
+variable = 'value'; // Устаревший
+var x, y, z = 0;    // Устаревший
+
 {
     let b = '2'; // Объявлено только в этой области
 }
 {
     const c = 3;    // Объявлено только в этой области
     const d = [1, 2, 3];
-    d.push(4);      // Можно
-    d = ['a', 'b']; // Нельзя
+    d.push(4);      // Мутация
+    d = ['a', 'b']; // Изменение - ошибка
 }
+
+// Деструктуризация
+const [a, b] = [1, 2];
+  
+const { a, b } = { a: 1, b: 2 };
 ```
-
----
-
-![bg](#000)
-![bg contain](img/mem-1.png)
 
 ---
 
@@ -120,44 +138,11 @@ var x, y, z = 0,
 * `++`, `--`, `+=`, `-=`, `/=` …
 * Optional Chaining: `mayBeNull?.property?.method?.()`
 * Nullish Coasting: `mayBeNull ?? defaultValue`
+* Перечисления: `,`
 
 ---
 
-# Rest оператор и деструктуризация
-
-```javascript
-const X = {
-    a: 1,
-    b: 2
-};
-
-const Y = {
-    ...X,
-    b: 3,
-    c: 4,
-    d: 5,
-};
-
-const { a, b, ...rest } = Y; // a = 1, b = 3, rest = { c: 4, d: 5 }
-```
-
----
-
-# Rest оператор и деструктуризация
-
-```javascript
-const X = [1, 2, 3];
-const Y = [...X, 4, 5];
-
-const [a, b, ...rest] = Y;
-// a = 1
-// b = 2
-// rest = [3, 4, 5]
-```
-
----
-
-# Оператор ветвления (условия)
+# Ветвление (условие)
 
 ```javascript
 if (condition) action;
@@ -194,19 +179,15 @@ for (let val of obj) { console.log(val); }
 # Функции
 
 ```javascript
+// Именованная функция
 function f1(a, b, c = 1) {
-    action(a, b, c);
+    return action(a, b, c);
 }
 
+// Анонимная функция
 const f2 = function() {
-    action();
+    return action();
 };
-
-const f3 = f2;
-
-(function(a, b) {
-    action(a, b);
-})(1, 2);
 ```
 
 ---
@@ -214,8 +195,12 @@ const f3 = f2;
 # Функции
 
 ```javascript
+// Функции могут быть вложенными
+
 function f1() {
+  
     function f2() {
+      
         function f3() {
             return 1;
         }
@@ -251,15 +236,16 @@ obj['New Value'] = 4;
 
 ---
 
-# This и контекст
+# `this` и контекст
 
+* Функции **выполняются** в некотором **"контексте"**
 * `this` - объект контекста
-* Содержит контекст в котором **выполняется** код функции
-* Если функция вызывается как есть, то контекст - глобальный 
-  (либо `undefined`)
-* Если функция вызывается, как метод объекта, то контекст - этот объект
-* Контекст можно устанавливать методами функции: 
-  `call`, `apply`, `bind`
+* Можно понимать `this`, как ещё один аргумент функции
+* Правила определения:
+  * Вызывается самостоятельно, контекст - глобальный/`undefined`
+  * Вызывается, как метод объекта, контекст - этот объект
+  * Вызывается с `new` - `this = {}`
+  * Контекст можно устанавливать явно методами: `call`, `apply`, `bind`
 
 ---
 
@@ -404,30 +390,88 @@ getPersonName('Mr. ');                  // Mr. Bob
 
 ---
 
-# Стрелочные функции
+# Стрелочная функция (arrow function)
 
-- Не влияет на контекст
-- Короткий синтаксис для lambda-функций
+- Короткая форма для анонимных и lambda-функций
+- **Не имеет своего контекста**
 
+```javascript
+const square = x => x ** 2;
+
+const sum = (a, b) => a + b;
+
+const print = (...args) => {
+  console.log(...args);
+};
 ```
+
+---
+
+# Стрелочная функция (arrow function)
+
+```javascript
 // this == obj
-function F(arg) {
+function foo(arg) {
     return this;
 }
-F(); // undefined
-const f = (arg) => {
+
+foo(); // undefined
+
+const bar = (arg) => {
     return this;
 };
-f(); // obj
-const square = x => x ** 2;
+
+bar(); // obj
+```
+
+---
+
+# Rest оператор `...`
+
+```javascript
+function foo(a, b, ...rest) {
+  // rest - массив с остальными аргументами
+}
+
+// С деструктуризацией
+const [a, b, ...rest] = [1, 2, 3, 4, 5];
+// a = 1
+// b = 2
+// rest = 3, 4, 5
+```
+
+---
+
+# Spread оператор `...`
+
+```javascript
+const args = [1, 2, 3];
+foo(...args); 
+// Эквивалент foo(1, 2, 3);
+
+/* Инициализация массива */
+const X = [1, 2, 3];
+const Y = [...X, 4, 5];
+// Y = [1, 2, 3, 4, 5]
+
+/* Инициализация объекта с деструктуризацией */
+const obj = { a: 1, b: 1 };
+const obj2 = {
+  a: 0,
+  ...obj, // эквивалент a: 1, b: 1
+  b: 2,
+} // { a: 1, b: 2 }
 ```
 
 ---
 
 # Методы массива
 
-- Мутирующие массив: `push`, `pop`, `splice`, `sort`, `reverse`...
-- Иммутабельные: `filter`, `map`, `some`, `every`, `reduce`... 
+- Мутирующие массив: `push`, `pop`, `shift`, `unshift`, `splice`, `sort`, `reverse`
+- Создающие новый массив: `filter`, `map`
+- Перебор массива: `forEach`, `reduce`
+- Проверка значений: `some`, `every`
+- Поиск: `indexOf`, `find`, `findIndex`
 
 ```javascript
 const numbers = [1, 2, 3, 4]
@@ -446,8 +490,8 @@ const Person = {
     get fullName() {
         return `${this.firstName} ${this.lastName}`;
     },
-    set fullName(s) {
-        const parts = s.split();
+    set fullName(value) {
+        const parts = value.split();
         this.firstName = parts[0];
         this.lastName = parts[1];
     }
@@ -456,16 +500,14 @@ const Person = {
 
 ---
 
-# Ключевое слово new
+# `new`
 
 - Функцию можно вызвать с `new`
-    - Выполнится код функции (может модифицировать `this`)
+    - Выполняется код функции в новом контексте
     - Вернётся значение `this`
-- Похоже на конструктор
+- aka конструктор
 
 ---
-
-# Ключевое слово new
 
 ```javascript
 function User(name) {
@@ -493,6 +535,8 @@ bob.getUpperCaseName() // BOB
 - Каждый объект имеет внутреннюю ссылку на другой объект, называемый его прототипом
 - На самом верху объект с прототипом `null`
 - При обращении к свойству объекта, оно будет искаться у самого объекта, затем прототипа, его прототипа и т.д.
+- Прототип устанавливается через свойство `prototype`
+- Объект прототипа находится в `__proto__`
 
 ---
 
@@ -523,7 +567,9 @@ const bob = new User('Bob');
 
 # Классы
 
-Синтаксический сахар над прототипами
+"Синтаксический сахар" над прототипами.
+
+_На самом деле нет._
 
 ---
 
@@ -573,17 +619,31 @@ try {
 
 # Асинхронность
 
-- Событийно-ориентированный язык. Однопоточное, асинхронное выполнение
-- I/O операции обычно асинхронные. Когда I/O операция завершается, вызывается функция - обработчик события (**callback**)
+- Событийно-ориентированный язык
+- Однопоточное, асинхронное выполнение
+- Реализация асинхронности не определяется спецификацией, а определяется средой выполнения
+- Вместо блокировки процесса на выполнение "внешней" операции процесс продолжается
+- По завершении (событии) асинхронной операции будет выполнена функция обработчик события (**callback**)
 
+---
 ```javascript
 function workWithImage(image) { /* ... */ }
 
-loadImage('/path', workWithImage);
+/* Синхронный код */
 
-const loader = new ImageLoader('/path');
-loader.onload = (image) => { workWithImage(image); };
-loader.onerror = (error) => { console.log(error); };
+const image = new Image('image.jpeg');
+// ...процесс заблокирован на время загрузки...
+workWithImage(image);
+anotherWork();
+
+/* Асинхронный код */
+const image = new Image('image.jpeg');
+image.onload = () => workWithImage(image);
+image.onerror = (error) => console.log(error);
+anotherWork(); // Вызывается сразу после НАЧАЛА ЗАГРУЗКИ
+
+/* Классический callback */
+setTimeout(callback, 5000);
 ```
 
 ---
@@ -598,24 +658,47 @@ loader.onerror = (error) => { console.log(error); };
 
 ---
 
-# Промисы
+# Promise
 
-- **Promise** - обещание, объект-обёртка для выполнения асинхронных операций
-- Может быть в состояниях: ожидание `pending`, исполнено `fulfilled`, отклонено `rejected`
-- Через метод `then` устанавливается callback успешного выполнения
-- Через метод `catch` устанавливается callback отклонения
-- Оба методы возвращают `Promise`, что позволяет делать цепочки
-- `promise = new Promise((resolve, reject) => { // resolve(result) });`
-- `promise.then(result => asyncWorkWithResult).then(work2).catch();`
+* **Promise** - обещание, объект для выполнения асинхронных операций
+* Может быть в состояниях: ожидание `pending`, исполнено `fulfilled`, отклонено `rejected`
+* Через метод `then` устанавливается `callback` успешного выполнения
+* Через метод `catch` устанавливается `callback` отклонения
+* Через метод `finally` устанавливается `callback` завершения
+* Все методы возвращают `Promise`, что позволяет делать цепочки
+* Можно создать через `new Promise(executor)`
+* `executor` - функция вида `(resolve, reject) => { ... }`
 
 ---
 
-# Промисы
+```javascript
+const sleep = (ms) => new Promise((resolve) => {
+  setTimeout(resolve, ms);
+});
+
+function uploadImage(link) {
+  return new Promise((resolve, reject) => {
+    const image = new Image(link);
+    image.onload = () => resolve(image);
+    image.onerror = (error) => reject(error);
+  });
+}
+
+sleep(5000).then(() => {
+  return uploadImage('link');
+}).then((image) => {
+  return workWithImage(image);
+}).catch((error) => {
+  console.error(error);
+})
+```
+
+---
 
 ```javascript
-getUserCountry(user, (country) => {
-  getCountryCurrency(country, (currency) => {
-    getCurrencyCode(currency, (code) => {
+getUserCountry(user, (error, country) => {
+  getCountryCurrency(country, (error, currency) => {
+    getCurrencyCode(currency, (error, code) => {
       // workWithCode
     });
   });
@@ -651,43 +734,77 @@ async function getUserCode() {
   return code;
 }
 
-getUserCode(user).then(code => { /* workWithCode */ });
-// or in async
-const code = await getUserCode(user);
+try {
+  const code = await getUserCode(user);
+} catch(err) {
+  catchAllErrors(err);
+}
 ```
 
 ---
 
-# Event Loop
+# Event Loop (концепция)
 
+* За асинхронность обычно отвечает **Цикл Событий** (**Event Loop**)
 * Есть классический **стек** вызова функций (**call stack**)
 * Есть **очередь задач** (список задач, **queued sub-tasks**)
-* Выполняется основной стек
-* Когда некоторая **асинхронная** функция выполнена, в конец **очереди задач** добавляются все функции-обработчики её завершения
-* Когда стек пуст - извлекается **первая** задача из **очереди задач**
-* Создаётся новый контекст выполнения, заносится в стек вызовов 
-* Этот цикл называется **Цикл Событий** (**Event Loop**)
-
+* Выполняется основной стек, запускающий асинхронные задачи
+* Когда **асинхронная** функция выполнена, в конец **очереди задач** добавляются функции-обработчики её завершения
+* Когда основной стек пуст - извлекается **первая** задача из **очереди задач**
+* Создаётся новый контекст выполнения, заносится в стек вызовов
 
 ---
 
+```javascript
+sync1();
+
+runAsync1(() => {
+  syncA();
+});
+
+sync2();
+
+sync3();
+
+runAsync2(() => {
+  runAsync3(() => { ... });
+});
+
+sync4();
+```
+
+---
+
+
 # Модули
+
+- Классический JS в браузере выполнялся в глобальной области видимости
+- В ES2015 появились **модули** с закрытой областью видимости
+- Модуль может экспортировать значения
+- Модуль может импортировать значения из других модулей
+- Модули кэшируются (aka `singletone`)
+- Импорты работают до выполнения кода модуля
+
+---
 
 ```javascript
 // Каждый модуль может экспортировать именованные значения и значение по умолчанию
 export const x = 0;
 export class User { };
-export default function() {};
+export default function foo() {};
 ```
 
 ```javascript
-// И импортировать (только статически!)
-import { x, User } from 'path/to/module';
-import functionName from 'path/to/module';
-const promise = import('path/to/module');
-```
+// Просто выполняем код другого модуля
+import 'path/to/module.js';
+// Импортируем именованные значения
+import { x, User } from 'path/to/module.js';
+// Импортируем значение по умолчанию
+import functionName from 'path/to/module.js'
 
-Модули кэшируются (aka `singletone`).
+// Динамический импорт позволяет импортировать асинхронно
+const promise = import('path/to/module.js');
+```
 
 ---
 
@@ -713,4 +830,4 @@ const promise = import('path/to/module');
 
 # In the next episode
 
-JavaScript в браузере: DOM, BOM
+JavaScript в браузере: DOM, BOM. Event Loop в браузере.
