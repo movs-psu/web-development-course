@@ -20,37 +20,55 @@ style: |
 
 <!-- _class: lead -->
 
-# **Лекция №3: JavaScript в Web-браузере**
+# **Лекция №3:**
+# **JavaScript в Web-браузере**
 
 Web-программирование / ПГНИУ
 
 ---
 
-# JS в Web-браузере
+# JavaScript в Web-браузере
 
-![bg right contain](img/dom-n-bom.png)
-
-- В браузере есть JS движок: V8 – в Chromimum, SpiderMonkey – в Firefox
-- Есть различные API для взаимодействия с браузером
+- В браузере есть JS движок, отвечающий за парсинг и выполнение JS:
+  - Chromium: **V8**
+  - Mozilla Firefox: **SpiderMonkey**
+  - Safari: **JavaScriptCore**
+- Браузер предоставляет среду исполнения JS и Web API:
+  - **DOM API** для манипулирования документом
+  - **BOM API** для взаимодействия с браузером
 - Подключается элементом `<script>`
-- Взаимодействие с **DOM** и **BOM**
+  - Глобальный объект браузера - `window`
+  - Глобальный объект HTML документа - `document`
+
+---
+
+![bg h:75%](img/dom-n-bom.png)
+
+---
+
+# DOM API
+
+- Поиск узлов
+- Манипулирование узлами
+- Взаимодействие с узлами
+- Работа с событиями
 
 ---
 
 # DOM: поиск элемента
 
 ```javascript
-element = document.getElementById('id');
-elements = document.getElementsByTagName('p');
-elements = document.getElementsByClassName('my-button');
-element = document.querySelector('input[type="text"].hidden');
-elements = document.querySelectorAll('input[type="text"].hidden');
+const element = document.getElementById('id');
+const elements = document.getElementsByTagName('p');
+const elements = document.getElementsByClassName('my-button');
+const element = document.querySelector('input[type="text"].hidden');
+const elements = document.querySelectorAll('input[type="text"].hidden');
 
-elements = element.childNodes;
-element = element.firstChild;
-element = element.lastChild;
-element = element.nextSibling;
-element = element.previousSibling;
+const elements = element.childNodes;
+const element = element.firstChild;
+const element = element.lastChild;
+const element = element.nextSibling;
+const element = element.previousSibling;
 ```
 
 ---
@@ -72,15 +90,17 @@ div2.remove();
 # DOM: взаимодействие с узлами
 
 ```javascript
-input = document.getElementsByTagName('input')[0];
+const input = document.querySelector('input');
 
-// Параметры
-input.id = '#FirstInput';
+// Свойства узла
 input.type; // text
+input.value = 'New Value';
+
 // Аттрибуты
 input.getAttribute('data-val');
 input.setAttribute('max', 10);
 
+// Стили
 input.style.backgroundColor = 'green';
 ```
 
@@ -96,8 +116,8 @@ function clickHandler(event) {
   // this ? 
 }
 button.onclick = clickHandler;
-button.addEventListener('click', clickHandler)
-button.addEventListener('click', clickHandler.bind(button));
+button.addEventListener('click', clickHandler, options)
+button.addEventListener('click', clickHandler.bind(button), options);
 button.removeEventListener('click', clickHandler);
 ```
 
@@ -109,6 +129,19 @@ button.removeEventListener('click', clickHandler);
 * Затем событие всплывает обратно (**Event Bubbling**)
 * По умолчанию обработчики событий срабатывают по порядку на этапе всплытия, но можно настроить обработку события на перехват на этапе погружения
 * И всплытие, и погружение можно остановить в обработчике
+
+---
+
+# BOM
+
+- HTTP запросы (+ Server-sent Events, Web Sockets, WebRTC)
+- Устройство: камера, микрофон, ориентация, геолокация, NFC, Bluetooth, Gamepad, вибрация, буфер обмена
+- Хранилища данных: Web Storage, IndexedDB
+- WebGL, WebGPU
+- File API
+- Оплата (Google Pay, Apple Pay ect), Share API
+- Воркеры
+- И многое другое...
 
 ---
 
@@ -142,6 +175,12 @@ button.removeEventListener('click', clickHandler);
 - `confirm` - показывает модальное окно с подтверждением
 - `prompt` - показывает модальное окно с полем ввода
 - все функции блокируют основной поток
+---
+
+# Функции, полезные при разработке
+
+- `console.log()`, `console.warn()`, `console.error()`, `console.table()`
+- `debugger`
 
 ---
 
@@ -152,10 +191,19 @@ button.removeEventListener('click', clickHandler);
 
 ---
 
-# Функции, полезные при разработке
+# Цикл событий в браузере
 
-- `console.log()`, `console.warn()`, `console.error()`, `console.table()`
-- `debugger` 
+- Цикл событий браузера делится на этапы:
+  1. **Макротаска** - синхронный JS код из очереди задач
+  2. Очередь **микротасков** - обработчиков завершения `Promise`-ов
+  3. **Рендеринг** страницы
+- Макротаски - задачи в очереди задач (обработчики асинхронных операций) и обработчики событий
+- Микротаску можно создать через `Promise` или `queueMicrotask(func)`
+- Выполнить перед рендерингом можно функцией `requestAnimationFame(func)`
+
+---
+
+![bg h:75%](./img/event-loop.png)
 
 ---
 
@@ -167,128 +215,6 @@ button.removeEventListener('click', clickHandler);
 * Используется на 73% сайтов (из топ 10 миллионов самых популярных на май 2019 )
 * «Уже не нужна»
 * ![](img/jquery-downloads.png)
-
----
-
-# Конструктор jQuery
-
-- `$ === jQuery`
-- `$(selector)` - возвращает один или список DOM-based элементов страницы (узлы с jQuery обёрткой)
-- `selector` - как в css, но ещё больше возможностей 
-- `$(domElement)` - элемент с jQuery обёрткой
-- `$(htmlCode)` - создаёт новый элемент
-
----
-
-# jQuery: получение элемента
-
-```javascript
-$elements = $("div")
-$elements = $("input:file")
-$elements = $("li:even")
-$elements = $("div:visible")
-$elements = $("div.myClass:not(.class)")
-$elements = $("<div class='myclass'></div>")
-$element = $(document.getElementById('id'))
-```
-
----
-
-# jQuery: поиск связных элементов
-
-```javascript
-// Перемещение
-$element.children('selector');
-$element.closest('selector');
-$element.next('selector');
-$elements.find('selector');
-// Фильтрация
-$elements.first();
-$element.has('selector');
-$element.not('selector');
-// Обход
-$elements.each((idx, domElement) => {});
-$elements.map((idx, domElement) => {});
-```
-
----
-
-# jQuery: манипулирование
-
-```javascript
-// Атрибуты
-attrValue = $element.attr('attr');
-$element.attr('attr', 'new value');
-$element.addClass('class'); // remove, toggle
-value = $input.val();
-// Стили и параметры
-$element.css();
-$element.height();
-$element.position();
-// Содержимое
-html = $element.html();
-$element.html('<new-html>');
-$element.text();
-$element.append(otherElement);
-$element.appendTo(otherElement);
-$element.remove();
-```
-
----
-
-# jQuery: события
-
-```javascript
-$elements.click();
-$elements.click(handler);
-$elements.keypress(handler);
-$(document).ready(handler);
-$image.load(handler)
-$elements.on('click', '.class', data, handler);
-$elements.once('click', handler);
-$element.resize(handler);
-$element.scroll(handler);
-```
-
----
-
-# jQuery: анимации
-
-```javascript
-$element.hide() // .show() .toggle()
-$element.fadeIn() // fadeOut(), fadeToggle()
-$element.queue() // .clearQueue()
-$element.animate({
-  opacity: 'toggle',
-  height: 'toggle',
-}, {
-  duration: 5000,
-  specialEasing: {
-    opacity: 'liner',
-    height: 'swing',
-  },
-});
-```
-
----
-
-# jQuery: утилиты
-
-```javascript
-$.browser
-$.ajax()
-$.getScript()
-$.extend()
-$.grep()
-$.inArray()
-$.isArray()
-$.isEmptyObject()
-$.isFunction()
-$.isPlainObject()
-$.trim()
-$.type()
-$.unique()
-```
 
 ---
 
@@ -306,8 +232,7 @@ $.unique()
 - https://learn.javascript.ru (часть 2)
 - https://developer.mozilla.org/ru/docs/DOM/DOM_Reference/Введение
 - https://developer.mozilla.org/en-US/docs/Web/API
-- jQuery: https://jquery.com 
-- Русская документация с удобной картой функций: http://jquery.page2page.ru
+- jQuery: https://jquery.com
 
 ---
 
