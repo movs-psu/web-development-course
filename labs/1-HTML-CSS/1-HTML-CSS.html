@@ -1,0 +1,237 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"><style type="text/css">/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+/*# sourceURL=C:\Projects\web-development-course\node_modules\md-to-pdf\node_modules\highlight.js\styles\github.css*/</style><style type="text/css">body { max-width: 186mm; margin: 0 auto; }
+          .page-break { page-break-after: always; }
+          /* .markdown-body { font-size: 11px; } */
+          .markdown-body pre > code { white-space: pre-wrap; }</style></head>
+<body class="markdown-body">
+<h1 id="лабораторная-работа-№1-вёрстка">Лабораторная работа №1: Вёрстка</h1>
+<blockquote>
+<p><em>Максимум 10 баллов. Часть Контрольной точки 2: HTML, CSS</em></p>
+</blockquote>
+<h2 id="задача">Задача</h2>
+<p>Требуется реализовать вёрстку страницы по эскизу на основе заготовки в директории <code>solution</code>.</p>
+<p><strong>Задачу требуется решить без использования дополнительных библиотек и систем сборки.</strong></p>
+<h4 id="эскиз">Эскиз</h4>
+<p><img src="sketchs/sketch.png" alt="sketch"></p>
+<h4 id="подсказки">Подсказки</h4>
+<ul>
+<li>Установите <code>box-sizing: border</code> для всех элементов</li>
+<li>Используйте <code>flex</code> для колонок и выравнивания по центру</li>
+<li>Используйте автоматический <code>margin</code> для выравнивания пунктов навигации влево и вправо</li>
+<li>Используйте <code>object-fit</code> на изображениях аватарок, чтобы оставлять изображение квадратным по центру</li>
+<li>Используйте абсолютное позиционирование или <code>float</code> для размещения даты сообщения</li>
+<li>Полезное расширение для
+Chrome: <a href="https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjmgdmbnecmcefdhjekcoceebi/">PerfectPixel by WellDoneCode</a></li>
+</ul>
+<h4 id="критерии">Критерии</h4>
+<ul>
+<li>(3б) Страница в целом соответствует эскизу на 1280x720 с точностью более 90%;</li>
+<li>(1б) Страница соответствует эскизу на 1280x720 с точностью более 99.98%;</li>
+<li>(1б) Страница соответствует эскизу на 1200x700 с точностью более 99.98%;</li>
+<li>(2б) Страница соответствует эскизу на 1024x576 с точностью более 99.98% (адаптивность);</li>
+<li>(1б) Использованы семантические теги (<code>nav, main, footer, article, ul, h1, time</code>);</li>
+<li>(1б) Основные параметры заданы через CSS переменные (проверяется вручную);</li>
+<li>(1б) Вёрстка в целом соответствует BEM (проверяется вручную).</li>
+</ul>
+<h4 id="макет">Макет</h4>
+<p>Для удобства используйте <a href="http://go.shgk.me/Web-2020-Lab-1-Figma">макет в Figma</a>, в него "вшиты" основные параметры,
+описанные ниже, и есть возможность заимствовать некоторые стили для элементов.</p>
+<h3 id="основные-значения">Основные значения</h3>
+<ul>
+<li>Шрифт: <code>'Open Sans', sans-serif</code> (подключен в <code>_fonts.css</code>)</li>
+<li>Межстрочный интервал: <code>1.25</code></li>
+<li>Размеры шрифта:<ul>
+<li>Основной: <code>16px</code></li>
+<li>Большой: <code>20px (1.25rem)</code></li>
+</ul>
+</li>
+<li>Цвета:<ul>
+<li>Серый (основной цвет текста): <span style="color: #96A1AB">■</span> <code>#96A1AB</code></li>
+<li>Тёмный: <span style="color: #282E3A">■</span> <code>#282E3A</code></li>
+<li>Светло-серый: <span style="color: #ECECEC">■</span> <code>#ECECEC</code></li>
+<li>Серо-голубой: <span style="color: #282E3A">■</span> <code>#3D4957</code></li>
+<li>Бежевый: <span style="color: #DBC7A6">■</span> <code>#DBC7A6</code></li>
+</ul>
+</li>
+<li>Максимальный размер основной части сайта: <code>1128px</code></li>
+<li>Отступы:<ul>
+<li>Базовый: <code>16px (1rem)</code></li>
+<li>Большой: <code>24px (1.5rem)</code></li>
+<li>Маленький: <code>8px (0.5rem)</code></li>
+</ul>
+</li>
+<li>Радиус скругления рамок:<ul>
+<li>Основной: <code>8px (0.5rem)</code></li>
+<li>Маленький: <code>4px (0.25rem)</code></li>
+</ul>
+</li>
+<li>Размер аватара: <code>36px (2.25rem)</code></li>
+</ul>
+<h3 id="описание-компонентов">Описание компонентов</h3>
+<h4 id="страница">Страница</h4>
+<ul>
+<li>Основное содержимое страницы находится внутри контейнера</li>
+<li>Размер контейнера ограничен <code>максимальным значением</code></li>
+<li>На маленьком экране контейнер растягивается во всю ширину, оставляя <code>базовые отступы</code> до границ экрана</li>
+<li>Страница имеет <span style="color: #ECECEC">■</span> <code>светло-серый</code> фон и <span style="color: #96A1AB">■</span> <code>серый</code> текст</li>
+<li>Ссылки также имеют <span style="color: #96A1AB">■</span> <code>серый</code> текст</li>
+<li>Внизу страницы подвал, имеющий <code>большие отступы</code> по вертикали и <span style="color: #282E3A">■</span> <code>тёмный</code> фон</li>
+<li>Подвал прижат к нижней части страницы, даже если содержимое меньше экрана</li>
+</ul>
+<h4 id="навигационная-панель">Навигационная панель</h4>
+<ul>
+<li>В верхней части сайта - навигационная панель</li>
+<li>Панель имеет <code>базовые внутренние отступы</code> по вертикали</li>
+<li>Содержимое находится внутри <code>контейнера</code>. Это <span style="color: #ECECEC">■</span> <code>светло-серый</code> логотип и два меню со ссылками (слева и справа)</li>
+<li>Логотип занимает колонку в <code>ширину колонки</code> и отделён от меню <code>базовым отступом</code></li>
+<li>Ссылки в меню имеют <code>базовый внутренний отступ</code></li>
+<li>Активная ссылка имеет <span style="color: #ECECEC">■</span> <code>светло-серый</code> фон</li>
+</ul>
+<h4 id="основная-часть">Основная часть</h4>
+<ul>
+<li>Основная часть отделена <code>базовым отступом</code> от навигационной панели</li>
+<li>Основная часть визуально на колонку с <code>шириной колонки</code> с меню и основное содержимое, разделенных <code>базовым отступом</code></li>
+<li>В начале каждой колонки заголовок <code>большого размера</code> с <code>базовым отступом</code> снизу</li>
+</ul>
+<h4 id="меню">Меню</h4>
+<ul>
+<li>Меню - список ссылок</li>
+<li>Каждая ссылка имеет <code>базовый внутренний отступ</code> по горизонтали и <code>маленький внутренний отступ</code> по вертикали</li>
+<li>Вторая ссылка "активная" и имеет фон <span style="color: #282E3A">■</span> <code>тёмного</code> цвета, <span style="color: #ECECEC">■</span> <code>светло-серый</code> текст и <code>маленькое скругление</code> углов</li>
+</ul>
+<h4 id="список-сообщений">Список сообщений</h4>
+<ul>
+<li>Сообщения выводятся вертикальным списком сообщений, разделённых <code>базовым отступом</code></li>
+</ul>
+<h4 id="сообщение">Сообщение</h4>
+<ul>
+<li>Каждое сообщение имеет <code>базовый внутренний отступ</code>, <span style="color: #282E3A">■</span> <code>серо-голубой</code> фон и <code>скруглённые</code> углы</li>
+<li>Сообщение содержит три параграфа, разделённых <code>маленьким отступом</code></li>
+<li>Первый параграф содержит аватар и имя отправителя <span style="color: #DBC7A6">■</span> <code>бежевым цветом</code> <code>большого размера</code> шрифта</li>
+<li>Аватар - круг с изображением, который отделяется от имени <code>маленьким отступом</code></li>
+<li>Изображение внутри блока с аватаром занимает всё доступное место, сохраняя исходные пропорции</li>
+<li>Имя автора находится по центру по вертикали</li>
+<li>Тема сообщения выводится <code>шрифтом большого размера</code></li>
+<li>Справа сверху выводится дата сообщения в элементе <code>&lt;time&gt;</code></li>
+</ul>
+<h2 id="инструкция-по-автоматическому-тестированию">Инструкция по автоматическому тестированию</h2>
+<p>Автоматическое тестирование проводится в браузере, основанном на Chromium (Electron), с использованием
+фреймворка <a href="https://www.cypress.io/">Cypress</a>.</p>
+<p>Во время тестирования результат будет сравниваться с эталоном попиксельно, а также проверяться, что использованы
+правильные семантические теги и ссылки.</p>
+<p><em>Примечание: первая установка может потребовать около 5 минут и ~50МБ интернет трафика.</em></p>
+<ol>
+<li>Склонируйте ваш репозиторий командой <code>git clone &lt;ваш-репозиторий&gt;</code></li>
+<li>Перейдите в директорию репозитория</li>
+<li>Установите <a href="https://nodejs.org/">Node.js</a> версии не ниже 14 LTS</li>
+<li>Установите зависимости командой <code>npm ci</code></li>
+<li>Решите задачу в директории <code>solution</code> (там уже есть заготовка)</li>
+<li>Запустите тестирование командой <code>npm test</code> (займёт около 10-15 секунд)</li>
+<li>Если тестирование провалится: в директории <code>snapshots/lab-1.spec.js/__diff_output__</code> будут изображение со сравнением
+вашего результата и ожидаемого</li>
+<li>Если тестирование будет выполнено успешно: делайте коммит <code>git commit -am "Сообщение"</code> и отправляйте
+решение <code>git push</code></li>
+</ol>
+<p><strong>Важно:</strong> время тестирования ограничено. Пожалуйста, не отправляйте решение, пока не будете готовы его сдавать :)</p>
+
+
+
+</body></html>
