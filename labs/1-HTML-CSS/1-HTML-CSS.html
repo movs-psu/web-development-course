@@ -113,8 +113,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <p><img src="sketchs/sketch.png" alt="sketch"></p>
 <h4 id="подсказки">Подсказки</h4>
 <ul>
-<li>Установите <code>box-sizing: border</code> для всех элементов</li>
-<li>Используйте <code>flex</code> для колонок и выравнивания по центру</li>
+<li>Установите <code>box-sizing: border</code> для всех элементов<ul>
+<li>Используйте <code>flex</code> для колонок и выравнивания по центру (<code>grid</code> также допустим)</li>
+</ul>
+</li>
 <li>Используйте автоматический <code>margin</code> для выравнивания пунктов навигации влево и вправо</li>
 <li>Используйте <code>object-fit</code> на изображениях аватарок, чтобы оставлять изображение квадратным по центру</li>
 <li>Используйте абсолютное позиционирование или <code>float</code> для размещения даты сообщения</li>
@@ -152,6 +154,7 @@ Chrome: <a href="https://chrome.google.com/webstore/detail/perfectpixel-by-welld
 </ul>
 </li>
 <li>Максимальный размер основной части сайта: <code>1128px</code></li>
+<li>Ширина колонки: <code>188px</code></li>
 <li>Отступы:<ul>
 <li>Базовый: <code>16px (1rem)</code></li>
 <li>Большой: <code>24px (1.5rem)</code></li>
@@ -188,7 +191,7 @@ Chrome: <a href="https://chrome.google.com/webstore/detail/perfectpixel-by-welld
 <h4 id="основная-часть">Основная часть</h4>
 <ul>
 <li>Основная часть отделена <code>базовым отступом</code> от навигационной панели</li>
-<li>Основная часть визуально на колонку с <code>шириной колонки</code> с меню и основное содержимое, разделенных <code>базовым отступом</code></li>
+<li>Основная часть разделяется на колонку с меню <code>шириной колонки</code> и основное содержимое, разделенных <code>базовым отступом</code></li>
 <li>В начале каждой колонки заголовок <code>большого размера</code> с <code>базовым отступом</code> снизу</li>
 </ul>
 <h4 id="меню">Меню</h4>
@@ -226,7 +229,7 @@ Chrome: <a href="https://chrome.google.com/webstore/detail/perfectpixel-by-welld
 <li>Решите задачу в директории <code>solution</code> (там уже есть заготовка)</li>
 <li>Запустите тестирование командой <code>npm test</code> (займёт около 10-15 секунд)</li>
 <li>Если тестирование провалится: в директории <code>snapshots/lab-1.spec.js/__diff_output__</code> будут изображение со сравнением
-вашего результата и ожидаемого</li>
+ожидаемого результата (слева) и вашего (справа)</li>
 <li>Если тестирование будет выполнено успешно: делайте коммит <code>git commit -am "Сообщение"</code> и отправляйте
 решение <code>git push</code></li>
 </ol>
