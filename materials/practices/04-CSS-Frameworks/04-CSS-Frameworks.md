@@ -2,7 +2,7 @@
 theme: gaia
 paginate: true
 backgroundColor: #fff
-footer: Практика №4: UI-Фреймворки / Курс Web-программирования 2020 / ПГНИУ
+footer: Практика №4: CSS-Фреймворки / Курс Web-программирования 2021 / ПГНИУ
 style: |
     section {
       font-family: "Open Sans", "Tahoma", "apple color emoji", "segoe ui emoji", "segoe ui symbol", "noto color emoji";
@@ -20,7 +20,7 @@ style: |
 
 <!-- _class: lead -->
 
-# **Практика №4: UI-Фреймворки**
+# **Практика №4: CSS-Фреймворки**
 
 Web-программирование / ПГНИУ
 
@@ -30,7 +30,7 @@ Web-программирование / ПГНИУ
 
 ![bg right contain](img/css-sucks-griffin.gif)
 
-Блочная модель, Flex, адаптивность, кросс-браузерность, доступность... 
+Flex, Grid, адаптивность, кросс-браузерность, доступность... 
 
 Бывает, что:
 - Не требуется уникальный дизайн
@@ -39,26 +39,27 @@ Web-программирование / ПГНИУ
 
 ---
 
-# UI Фреймворки
+# CSS-фреймворк
 
-- UI Фреймворк (UI kit, **CSS фреймворк**) - библиотека для быстрой вёрстки веб-страниц, готовые CSS стили и компоненты
-- CSS файлы и иногда JS скрипты для интерактивных компонентов 
+**CSS фреймворк** (UI kit, UI фреймворк) - библиотека для быстрой вёрстки веб-страниц
+- Готовые CSS стили, часто компоненты
+- CSS файлы, иногда JS скрипты для интерактивных компонентов 
 - Иногда следуют дизайн системе
-- Часто имеет возможности конфигурирования, расширения и создания тем
-    
+- Часто имеет возможности конфигурирования, расширения, создания тем
+
 ---
 
 # Примеры
 
-- UI-фреймворки:
-    - Twitter Bootstrap
-    - Material, MaterializeCSS
-    - Zurb Foundation
-    - Bulma
-    - Semantic UI
-    - UIKit
-- Микро-фреймворки: Yahoo PureCSS, Milligram
-- CSS Utility: Tailwind CSS 
+- Классические:
+  - ![h:1em](https://getbootstrap.com/docs/5.1/assets/img/favicons/favicon-32x32.png) **Bootstrap**
+  - ![h:1em](https://getmdl.io/assets/android-desktop.png) Material Design Lite, ![h:1em](https://materializecss.com/images/favicon/favicon-32x32.png) MaterializeCSS
+  - ![h:1em](https://get.foundation/assets/img/icons/foundation-favicon.ico) Zurb Foundation
+  - ![h:1em](https://bulma.io/favicons/favicon-32x32.png?v=201701041855) Bulma
+  - ![h:1em](https://semantic-ui.com/images/logo.png) Semantic UI
+  - ![h:1em](https://getuikit.com/images/favicon.png) UIKit
+- Микро-фреймворки: ![h:1em](https://purecss.io/img/favicon.ico) Yahoo PureCSS, ![h:1em](http://getskeleton.com/dist/images/favicon.png) Skeleton
+- Utility-first: ![h:1em](https://tailwindcss.com/favicon-32x32.png) **Tailwind CSS**, ![h:1em](https://windicss.org/assets/logo.svg) Windi CSS, Tachyons
 
 ---
 
@@ -74,48 +75,54 @@ Web-программирование / ПГНИУ
 
 ---
 
-# ![h:1em](img/bootstrap-logo.png) Twitter Bootstrap 
+# ![h:1em](img/bootstrap-logo.png) Bootstrap
+
+- Самый популярный CSS фреймворк долгие годы
+- Стили страницы, сетка
+- Компоненты
+- Интерактивные компоненты, валидация форм
+- Утилитные классы
+- Широкая кастомизация
+- Большая экосистема тем
+
+---
+
+![](img/bootstrap-grid.png)
 
 ```html
 <div class="container">
     <div class="row">
-        <div class="col"></div>
-        <div class="col"></div>    
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
     </div>
 </div>
-
-<a class="btn btn-danger btn-lg"></a>
 ```
 
 ---
 
 ![bg](black)
-![bg contain](img/bootstrap-1.png)
+![bg cover](img/bootstrap-navbars.png)
 
 ---
 
 ![bg](black)
-![bg contain](img/bootstrap-2.png)
+![bg cover](img/bootstrap-album.png)
 
 ---
 
 ![bg](black)
-![bg contain](img/bootstrap-3.png)
+![bg cover](img/bootstrap-form.png)
 
 ---
 
 ![bg](black)
-![bg contain](img/bootstrap-4.png)
+![bg cover](img/bootstrap-blog.png)
 
 ---
 
 ![bg](black)
-![bg contain](img/bootstrap-5.png)
-
----
-
-![bg](black)
-![bg contain](img/bootstrap-6.png)
+![bg contain](img/bootstrap-moodle.png)
 
 ---
 
@@ -205,12 +212,20 @@ Web-программирование / ПГНИУ
 
 # Ссылки
 
-- https://purecss.io, https://milligram.io
+- https://purecss.io, http://getskeleton.com
 - https://getbootstrap.com
-- https://materializecss.com 
+- https://getmdl.io, https://materializecss.com 
 - https://getuikit.com 
 - https://semantic-ui.com
-- https://foundation.zurb.com
+- https://get.foundation
 - https://bulma.io
 - https://fontawesome.com 
-- https://tailwindcss.com 
+- https://tailwindcss.com, https://windicss.org, https://tachyons.io
+
+---
+
+# Пример
+
+![bg right contain](img/replit-example.png)
+
+https://replit.com/@ShGKme/Web-Bootstrap
