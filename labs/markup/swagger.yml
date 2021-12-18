@@ -1,0 +1,155 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Мини-Почта"
+host: "minimail.web.shgk.me"
+basePath: "/api"
+tags:
+  - name: "Messages"
+    description: "Сообщения Мини-Почты"
+schemes:
+  - "https"
+paths:
+  /messages:
+    get:
+      tags:
+        - "Messages"
+      summary: "Возвращает список всех сообщений"
+      description: "Возвращает список всех сообщений, отсортированных по убыванию по количеству хлопков"
+      operationId: "getMessages"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Успешно получен список сообщений"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Message"
+    post:
+      tags:
+        - "Messages"
+      summary: "Создаёт новое сообщение"
+      operationId: "addMessage"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Объект с данными нового сообщения"
+          required: true
+          schema:
+            $ref: "#/definitions/NewMessageDTO"
+      responses:
+        "201":
+          description: "Сообщение успешно создано"
+          schema:
+            $ref: "#/definitions/Message"
+        "422":
+          description: "Ошибка валидации"
+          schema:
+            $ref: "#/definitions/Error"
+  /messages/{messageId}:
+    get:
+      tags:
+        - "Messages"
+      summary: "Возвращает сообщение по ID"
+      description: ""
+      operationId: "getMessage"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "messageId"
+          in: "path"
+          description: "ID сообщения"
+          required: true
+          type: "integer"
+          format: "int32"
+      responses:
+        "200":
+          description: "Сообщение найдено"
+          schema:
+            $ref: "#/definitions/Message"
+        "404":
+          description: "Сообщение с таким ID не найдено"
+  /messages/{messageId}/claps:
+    post:
+      tags:
+        - "Messages"
+      summary: "Увеличивает количество хлопков сообщения на 1"
+      description: ""
+      operationId: "clapMessage"
+      parameters:
+        - name: "messageId"
+          in: "path"
+          description: "ID сообщения"
+          required: true
+          type: "integer"
+          format: "int32"
+      responses:
+        "201":
+          description: "Хлопок добавлен"
+          schema:
+            $ref: "#/definitions/ClapsCount"
+        "404":
+          description: "Сообщение с таким ID не найдено"
+definitions:
+  NewMessageDTO:
+    type: "object"
+    required:
+      - "author"
+      - "message"
+    properties:
+      author:
+        type: "string"
+        description: "Имя автора сообщения"
+        example: "Sender Name"
+      message:
+        type: "string"
+        description: "Текст сообщения"
+        example: "Lorem ipsum..."
+  Message:
+    type: "object"
+    required:
+      - "id"
+      - "author"
+      - "message"
+      - "claps"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "ID сообщения"
+        example: 1
+      author:
+        type: "string"
+        description: "Имя автора сообщения"
+        example: "Sender Name"
+      message:
+        type: "string"
+        description: "Текст сообщения"
+        example: "Lorem ipsum..."
+      claps:
+        type: "integer"
+        format: "int32"
+        description: "Количество хлопков"
+        example: 42
+  ClapsCount:
+    type: "object"
+    properties:
+      count:
+        type: "integer"
+        format: "int32"
+        description: "Количество хлопков"
+        example: 42
+  Error:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+        description: "Сообщение ошибки"
+        example: "Автор не должен быть длиннее 30 символов"

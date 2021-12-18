@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <title>Мини-почта</title>
+  </head>
+
+  <body>
+    <div class="d-flex flex-column bg-light min-vh-100">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand mx-auto" href="/">📨 Мини-почта 📨</a>
+        </div>
+      </nav>
+
+      <main class="container flex-fill my-3">
+        <form class="card border-secondary mb-3" data-test="send-form">
+          <fieldset>
+            <legend class="card-header h5 border-secondary bg-dark text-light">📩 Отправить письмо</legend>
+            <div class="card-body">
+              <div class="mb-3" data-test="send-alert">
+                <div class="alert alert-danger">Текст ошибки</div>
+              </div>
+              <!--<div class="mb-3" data-test="send-alert">-->
+              <!--  <div class="alert alert-warning">Загрузка...</div>-->
+              <!--</div>-->
+              <!--<div class="mb-3" data-test="send-alert">-->
+              <!--  <div class="alert alert-success">Сообщение отправлено</div>-->
+              <!--</div>-->
+              <div class="mb-3">
+                <label for="sender" class="form-label">От кого:</label>
+                <input id="sender" name="sender" class="form-control" type="text" placeholder="Имя отправителя" />
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Сообщение:</label>
+                <textarea id="message" name="message" class="form-control" placeholder="Текст сообщения"></textarea>
+              </div>
+              <div class="d-flex">
+                <button class="btn btn-outline-success ms-auto">✏️ Отправить</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <article class="card" data-test="message">
+              <div class="card-body">
+                <header class="card-title d-flex">
+                  <div class="text-muted" data-test="message-author">Имя Автора</div>
+                  <a href="message.html" class="card-link ms-auto" data-test="message-open">Открыть ↗️</a>
+                </header>
+                <div class="card-text" data-test="message-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eveniet ex excepturi id inventore
+                  neque ratione, rerum sapiente tempora. Architecto, debitis distinctio facere modi molestias mollitia
+                  quasi quidem sed voluptates.
+                </div>
+                <div class="d-flex">
+                  <form class="ms-auto" data-test="message-clap-form">
+                    <button class="btn">👏🏻 <span data-test="clap-count">2</span></button>
+                  </form>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="mb-3">
+            <article class="card" data-test="message">
+              <div class="card-body">
+                <header class="card-title d-flex">
+                  <div class="text-muted" data-test="message-author">Котейка Котейкович</div>
+                  <a href="message.html" class="card-link ms-auto" data-test="message-open">Открыть ↗️</a>
+                </header>
+                <div class="card-text" data-test="message-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eveniet ex excepturi id inventore
+                  neque ratione, rerum sapiente tempora. Architecto, debitis distinctio facere modi molestias mollitia
+                  quasi quidem sed voluptates.
+                </div>
+                <div class="d-flex">
+                  <form class="ms-auto" data-test="message-clap-form">
+                    <button class="btn">👏🏻 <span data-test="clap-count">1</span></button>
+                  </form>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </main>
+
+      <footer class="bg-dark text-light py-3">
+        <div class="container text-center">
+          Лабораторная работа по курсу Web-программирования. Выполнено студентом Студент Студентов ПМИ-0
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

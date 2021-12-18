@@ -1,0 +1,153 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"><style type="text/css">/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+/*# sourceURL=C:\Projects\web-development-course\node_modules\md-to-pdf\node_modules\highlight.js\styles\github.css*/</style><style type="text/css">body { max-width: 186mm; margin: 0 auto; }
+          .page-break { page-break-after: always; }
+          /* .markdown-body { font-size: 11px; } */
+          .markdown-body pre > code { white-space: pre-wrap; }</style></head>
+<body class="markdown-body">
+<h1 id="лабораторная-работа-№-3-сервер">Лабораторная работа № 3: Сервер</h1>
+<blockquote>
+<p><em>Максимум 10 баллов. Часть контрольной точки 2.</em></p>
+</blockquote>
+<h2 id="задача">Задача</h2>
+<p><strong>Требуется реализовать простой традиционный веб-сайт "Мини-почта".</strong></p>
+<p>Веб-сайт публичной доски сообщений с функциями выражения одобрения через хлопки.</p>
+<h3 id="-главная-страница---страница-сообщений"><code>/</code> Главная страница - страница сообщений</h3>
+<p>На главной странице выводится форма отправки сообщения и список всех сообщений.</p>
+<ul>
+<li>Отправка сообщения:<ul>
+<li>Сообщение отправляется формой с полями:<ul>
+<li>Поле ввода имени отправителя (от 1 до 30 символов)</li>
+<li>Многострочное поле ввода текста сообщения (от 1 до 1000 символов)</li>
+</ul>
+</li>
+<li>Валидация формы должна работать на стороне сервера</li>
+<li>После отправки формы должна выводиться та же страница с новым добавленным сообщением</li>
+<li>При возникновении ошибок при отправке формы (валидации или на сервере), ошибка должна выводиться в уведомлении в форме</li>
+</ul>
+</li>
+<li>Список сообщений:<ul>
+<li>В списке сообщений выводятся все сообщения, отсортированные по убыванию количества хлопков</li>
+<li>В каждом сообщении количество хлопков выводится кнопкой, нажатие на которую увеличивает количество хлопков</li>
+<li>В каждом сообщении выводится ссылка на индивидуальную страницу сообщения</li>
+</ul>
+</li>
+</ul>
+<h3 id="messagesmessageid-страница-сообщения"><code>/messages/&lt;messageId&gt;</code> Страница сообщения</h3>
+<p>На индивидуальной странице сообщения выводится одно сообщение по ID. </p>
+<h2 id="требования">Требования</h2>
+<ul>
+<li>Веб-сайт должен быть реализован на традиционных технологиях, при которых содержимое рендерится на стороне сервера посредством шаблонов или DSL, а отправка нового сообщения и добавление хлопка реализовано через HTML формы</li>
+<li>Можно использовать любой язык программирования, библиотеки и фреймворки на серверной части</li>
+<li>Вёрстка задачи уже готова: <a href="https://github.com/movs-psu/web-development-course/tree/master/labs/markup">https://github.com/movs-psu/web-development-course/tree/master/labs/markup</a></li>
+</ul>
+<h2 id="критерии">Критерии</h2>
+<ul>
+<li><code>1б</code> Реализована главная страница со списком сообщений, отсортированных по убыванию количества хлопков</li>
+<li><code>1б</code> Реализована форма отправки нового сообщения</li>
+<li><code>1б</code> Реализована валидация формы отправки нового сообщения на стороне сервера</li>
+<li><code>1б</code> Реализованы кнопки увеличения количества хлопков</li>
+<li><code>1б</code> Реализована индивидуальная страница сообщения </li>
+<li><code>5б</code> Список сообщений хранится в БД и не теряется при перезапуске сервера</li>
+</ul>
+
+
+
+</body></html>

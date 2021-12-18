@@ -1,0 +1,133 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"><style type="text/css">/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+/*# sourceURL=C:\Projects\web-development-course\node_modules\md-to-pdf\node_modules\highlight.js\styles\github.css*/</style><style type="text/css">body { max-width: 186mm; margin: 0 auto; }
+          .page-break { page-break-after: always; }
+          /* .markdown-body { font-size: 11px; } */
+          .markdown-body pre > code { white-space: pre-wrap; }</style></head>
+<body class="markdown-body">
+<h1 id="лабораторная-работа-№-5-api">Лабораторная работа № 5: API</h1>
+<blockquote>
+<p><em>Максимум 10 баллов. Часть контрольной точки 3.</em></p>
+</blockquote>
+<h2 id="задача">Задача</h2>
+<p><strong>Требуется реализовать API веб-cайта "Мини-почта".</strong></p>
+<p>Спецификация доступна в формате <strong>Swagger</strong>:</p>
+<ul>
+<li><a href="https://minimail.web.shgk.me/swagger.json">swagger.json</a></li>
+<li><a href="https://minimail.web.shgk.me/swagger.yml">swagger.yml</a></li>
+</ul>
+<p>Документация:</p>
+<ul>
+<li><a href="https://redocly.github.io/redoc/?url=https://minimail.web.shgk.me/swagger.json&amp;nocors">ReDoc UI</a></li>
+<li><a href="https://petstore.swagger.io/?url=https://minimail.web.shgk.me/swagger.json">Swagger UI</a></li>
+</ul>
+<h2 id="критерии">Критерии</h2>
+<ul>
+<li><code>1б</code> Реализован <code>GET /messages</code></li>
+<li><code>1б</code> Реализован <code>GET /messages/:messageID</code></li>
+<li><code>1б</code> Реализован <code>POST /messages</code></li>
+<li><code>1б</code> Реализован <code>POST /messages/:messageID/claps</code></li>
+<li><code>1б</code> Реализована валидация и проверка на существование сообщения</li>
+<li><code>5б</code> Список сообщений хранится в БД и не теряется при перезапуске сервера</li>
+</ul>
+
+
+
+</body></html>

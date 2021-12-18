@@ -116,11 +116,11 @@ Web-приложения, создаваемые в рамках НИР, чащ�
 | 0. **Входной контроль:** работа с БД                     | 1    | [html](labs/0-Incoming-control/0-Incoming-control.md), [PDF](labs/0-Incoming-control/0-Incoming-control.pdf) | [link](https://classroom.github.com/a/Jh5po0tZ) | same                                            | same                                            |
 | 1. **HTML, CSS:** вёрстка страницы проекта по эскизу     | 2    | [html](labs/1-HTML-CSS/1-HTML-CSS.md), [PDF](labs/1-HTML-CSS/1-HTML-CSS.pdf)                                 | [link](https://classroom.github.com/a/tA9HXI5v) | [link](https://classroom.github.com/a/vbec8prw) | [link](https://classroom.github.com/a/xQDrK0mg) |
 <!--
-| 2. **JS:** разработка маленькой игры на JavaScript       | 2    | [html](labs/2-JS/2-JS.md), [PDF](labs/2-JS/2-JS.pdf)                                                         | [link](https://classroom.github.com/a/12U1CKc9) | -                                                                                             | [link](https://classroom.github.com/a/BG5Ga3_o) |
-| 3. **Традиционное Web-приложение:** часть проекта без JS | 3    | [html](labs/3-Simple-Server/3-Simple-Server.md), [PDF](labs/3-Simple-Server/3-Simple-Server.pdf)             | [link](https://classroom.github.com/a/sI8JrOkW) | -                                                                                             | [link](https://classroom.github.com/a/ts9VMGVt) |
-| 4. **AJAX:** добавление AJAX в проект                    | 4    | [html](labs/4-AJAX/4-AJAX.md), [PDF](labs/4-AJAX/4-AJAX.pdf)                                                 | [link](https://classroom.github.com/a/Hvtb11zk) | -                                                                                             | [link](https://classroom.github.com/a/FjIVcaG2) |
-| 5. **SPA:** реализация клиентской части проекта как SPA  | 4    | [html](labs/5-SPA/5-SPA.md), [PDF](labs/5-SPA/5-SPA.pdf)                                                     | [link](https://classroom.github.com/a/LHt9NTv1) | -                                                                                             | [link](https://classroom.github.com/a/UKHP7iU4) |
-| 6. **Проект:** окончательная реализация SPA и API        | 3    | [html](labs/6-Web-App/6-Web-App.md), [PDF](labs/6-Web-App/6-Web-App.pdf)                                     | [link](https://classroom.github.com/a/Kl6REiVi) | -                                                                                             | [link](https://classroom.github.com/a/PASZU9DT) |
+| 2. **JS**                                                | 2    | [html](labs/2-JS/2-JS.md), [PDF](labs/2-JS/2-JS.pdf)                                                         |                                                 | -                                                                                             |                                                 |
+| 3. **Традиционное Web-приложение**                       | 4    | [html](labs/3-Server/3-Server.md), [PDF](labs/3-Server/3-Server.pdf)                                         |                                                 | -                                                                                             |                                                 |
+| 4. **AJAX**                                              | 3    | [html](labs/4-AJAX/4-AJAX.md), [PDF](labs/4-AJAX/4-AJAX.pdf)                                                 |                                                 | -                                                                                             |                                                 |
+| 5. **API**                                               | 3    | [html](labs/5-API/5-API.md), [PDF](labs/5-API/5-API.pdf)                                                     |                                                 | -                                                                                             |                                                 |
+| 6. **SPA**                                               | 4    | [html](labs/6-SPA/6-SPA.md), [PDF](labs/6-SPA/6-SPA.pdf)                                                     |                                                 | -                                                                                             |                                                 |
 | Альтернатива лабораторным работам 5-6                    | 3-4  | [html](labs/Alternative/Alternative.md), [PDF](labs/Alternative/Alternative.pdf)                             | - | - | - | - | - |
 
 -->
@@ -131,14 +131,16 @@ Web-приложения, создаваемые в рамках НИР, чащ�
 
 Информация об экзамене и вопросах к экзамену на странице **[> Экзамен](./Exam.md)**
 
-Итого контрольные точки собираются следующим образом:
-- КТ1 `10 б.` = Входной контроль `10 б.`
-- КТ2 `20 б.` = ЛР1 (HTML, CSS) `10 б.` + ЛР2 (JS) `10 б.`
-- КТ3 `20 б.` = ЛР3 (Server) `10 б.` + ЛР6 (Project) `10 б.`
-- КТ4 `20 б.` = ЛР4 (AJAX) `10 б.` + ЛР5 (SPA) `10 б.`
-- КТ5 `40 б.` = (ЛР1 + ЛР2 + ЛР3 + ЛР4 + ЛР5 + ЛР6) / 3 `20 б.` + Тест `20 б.`
-
 -->
+
+## Контрольные точки
+
+Контрольные точки собираются следующим образом:
+- КТ1 `10 б.` = Входной контроль `10 б.`
+- КТ2 `20 б.` = ЛР1 (HTML, CSS) `20 б.` + ЛР2 (JS) `0 б.`
+- КТ3 `20 б.` = ЛР4 (AJAX) `10 б.` + ЛР5 (API) `10 б.`
+- КТ4 `20 б.` = ЛР3 (Server) `10 б.` + ЛР6 (SPA) `10 б.`
+- КТ5 `40 б.` = (ЛР1 + ЛР2 + ЛР3 + ЛР4 + ЛР5 + ЛР6) / 3 `20 б.` + Тест `20 б.`
 
 ---
 
